@@ -7,7 +7,7 @@ export class DogsController {
 	constructor(private dogsService: DogsService) {}
 	
 	@Get()
-	findAll(): Dog[] {
+	findAll(): Promise<Dog[]> {
 		return this.dogsService.findAll();
 	}
 	
