@@ -1,3 +1,7 @@
+create database if not exists microservices_test;
+
+use microservices_test;
+
 create table breeds(
 	id SMALLINT AUTO_INCREMENT PRIMARY KEY,
 	name VARCHAR(150)
