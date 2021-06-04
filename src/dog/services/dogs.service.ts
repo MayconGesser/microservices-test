@@ -11,7 +11,7 @@ export class DogsService {
 	
 	private readonly dogs: Dog[] = [];
 
-	create(name: string, date_of_birth: string, breed: string, color: string): Promise<Dog> {
+	create(name: string, date_of_birth: string, breed: number, color: number): Promise<Dog> {
 		const newDog = this.dogsRepository.create({name, date_of_birth, breed, color});
 		return this.dogsRepository.save(newDog);
 		
