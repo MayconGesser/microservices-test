@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body } from '@nestjs/common';
+import { Controller, Get, Post, Body, Param } from '@nestjs/common';
 import { Dog } from '../entities/dog.entity';
 import { DogsService } from '../services/dogs.service';
 
@@ -10,6 +10,11 @@ export class DogsController {
 	findAll(): Promise<Dog[]> {
 		return this.dogsService.findAll();
 	}
+
+	@Get(':id')
+	findById(@Param('id') dogId: string): Promise<Dog[]> {
+		return this.dogsService.findById(dogId);
+	}
 	
 	@Post()
 	async create(
@@ -17,7 +22,7 @@ export class DogsController {
 	@Body('date_of_birth') date_of_birth: string, 
 	@Body('breed') breed: number,
 	@Body('color') color: number
-	){
+	): Promise<Dog>{
 		let date_split = date_of_birth.split('/');
 		let day = date_split[0];
 		let month = date_split[1];

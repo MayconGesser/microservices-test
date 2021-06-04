@@ -22,4 +22,12 @@ export class DogsService {
 	findAll(): Promise<Dog[]> {
 		return this.dogsRepository.find();		//SELECT * FROM dogs
 	}
+
+	findById(dogId: string): Promise<Dog[]> {		//SELCT * FROM dogs WHERE id = ?
+		return this.dogsRepository.find({
+			where: {
+				id: dogId
+			}
+		});
+	}
 }
