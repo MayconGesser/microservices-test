@@ -1,6 +1,6 @@
 import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 
-@Entity()
+@Entity({name: 'dogs'})
 export class Dog {
 	@PrimaryGeneratedColumn()
 	id: number;
@@ -12,8 +12,8 @@ export class Dog {
 	date_of_birth: string;
 	
 	@Column()
-	breed: string;
+	breed: number;
 	
 	@Column()
-	color: string;
+	color: number;
 }
