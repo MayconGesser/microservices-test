@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Param } from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, Patch } from '@nestjs/common';
 import { Dog } from '../entities/dog.entity';
 import { DogsService } from '../services/dogs.service';
 
@@ -22,12 +22,18 @@ export class DogsController {
 	@Body('date_of_birth') date_of_birth: string, 
 	@Body('breed') breed: number,
 	@Body('color') color: number
-	): Promise<Dog>{
-		let date_split = date_of_birth.split('/');
-		let day = date_split[0];
-		let month = date_split[1];
-		let year = date_split[2];
-		let normalizedDate = year + '-' + month + '-' + day;
-		return this.dogsService.create(name, normalizedDate, breed, color);
+	): Promise<Dog>{		
+		return this.dogsService.create(name, date_of_birth, breed, color);
+	}
+
+	@Patch(':id')
+	async update(
+		@Param('id') dogId: string,
+		@Body('name') name: string, 
+		@Body('date_of_birth') date_of_birth: string, 
+		@Body('breed') breed: number,
+		@Body('color') color: number
+		): Promise<Dog>{
+			return this.dogsService.update(dogId, name, date_of_birth, breed, color);
 	}
 }
