@@ -6,10 +6,10 @@ const config: MysqlConnectionOptions = {
   host: "localhost",
   port: 3306,
   username: "microservice_user",
-  password: "1234",
+  password: "user1234",
   database: "microservices_test",
   entities: [Dog],
-  synchronize: true
+  synchronize: false
 }
 
 export default config;
