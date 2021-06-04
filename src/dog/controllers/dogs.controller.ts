@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Param, Patch } from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, Patch, Delete } from '@nestjs/common';
 import { Dog } from '../entities/dog.entity';
 import { DogsService } from '../services/dogs.service';
 
@@ -35,5 +35,12 @@ export class DogsController {
 		@Body('color') color: number
 		): Promise<Dog>{
 			return this.dogsService.update(dogId, name, date_of_birth, breed, color);
+	}
+
+	@Delete(':id')
+	async remove(
+		@Param('id') dogId: string
+	): Promise<any> {
+		return this.dogsService.remove(dogId);
 	}
 }

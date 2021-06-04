@@ -50,4 +50,10 @@ export class DogsService {
 			
 		return this.dogsRepository.save(dog);
 	}
+
+	async remove(dogId: string): Promise<any> {
+		const result = await this.findById(dogId);
+		const dog = result[0];
+		return this.dogsRepository.remove(result);
+	}
 }
